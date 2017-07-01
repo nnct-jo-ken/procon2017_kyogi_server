@@ -1,1 +1,1 @@
-"# procon2017_kyogi_server" 
+# procon2017_kyogi_server
