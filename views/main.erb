@@ -1,0 +1,66 @@
+<h1>File Server</h1>
+<div class="indent">
+	<h2>UPLOAD YOUR FILES</h2>
+	<form action="/receive" method="POST" enctype="multipart/form-data">
+		<input type="radio" name="directory" value="unsolved" checked>unsolved<br>
+		<input type="radio" name="directory" value="solved">solved<br>
+		<br>
+		<input type="file" name="upFiles"><br>
+		<input type="submit" value="UPLOAD">
+	</form>
+	
+	<h2>UPLOADED FILES</h2>
+	<table border="1" cellspacing="0" width="50%" style="float: left">
+		<tr>
+			<th colspan="2">
+				<h4>FOLDER: unsolved</h4>
+			</th>
+		</tr>
+		<tr>
+			<th width="60%">
+				FILE NAME
+			</th>
+			<th width="40%">
+				LAST UPDATED TIME
+			</th>
+		</tr>
+		<% 0.upto(@files_unsolved.length - 1) do |idx| %>
+			<tr>
+				<td>
+					<a href="/data/<%= @files_unsolved[idx] %>" download><%= @files_unsolved[idx] %></a>
+				</td>
+				<td>
+					<%= @status_unsolved[idx] %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+
+	<table border="1" cellspacing="0" width="50%">
+		<tr>
+			<th colspan="2">
+				<h4>FOLDER: solved</h4>
+			</th>
+		</tr>
+		<tr>
+			<th width="60%">
+				FILE NAME
+			</th>
+			<th width="50%">
+				LAST UPDATED TIME
+			</th>
+		</tr>
+		<% 0.upto(@files_solved.length - 1) do |idx| %>
+			<tr>
+				<td>
+					<a href="/data/<%= @files_solved[idx] %>" download><%= @files_solved[idx] %></a>
+				</td>
+				<td>
+					<%= @status_solved[idx] %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+	
+</div>
+
